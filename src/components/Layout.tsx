@@ -3,17 +3,14 @@
 import React from 'react';
 import NavbarComponent from './Navbar';
 import FooterComponent from './Footer';
+import { Outlet } from 'react-router-dom';
 
-type LayoutProps = {
-    children: React.ReactNode;
-};
-
-function Layout({ children }: LayoutProps) {
+function Layout() {
     return (
         <div className="layout-container">
             <NavbarComponent />
             <main className='pt-20'>
-                {children}
+                <Outlet />
             </main>
             <FooterComponent />
         </div>

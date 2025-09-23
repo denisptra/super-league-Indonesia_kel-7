@@ -1,12 +1,14 @@
-import Layout from "../components/Layout";
+import CardComponent from "../components/Card";
 
 function HomePage() {
     return (
-        <Layout>
-            
+        <>
+            <div className="px-30">
+                <CardComponent />
+            </div>
             <h1>Ini adalah Halaman Utama</h1>
             <p>Konten ini akan ditampilkan di dalam layout.</p>
-        </Layout>
+        </>
     );
 }
 
