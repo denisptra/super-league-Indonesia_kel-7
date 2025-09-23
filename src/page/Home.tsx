@@ -1,12 +1,9 @@
-import Layout from "../components/Layout";
-
 function HomePage() {
-    return (
-        <Layout>
-            
-            <h1>Ini adalah Halaman Utama</h1>
+   return (
+        <div>
+            <h2>Ini adalah Halaman Home</h2>
             <p>Konten ini akan ditampilkan di dalam layout.</p>
-        </Layout>
+        </div>
     );
 }
 

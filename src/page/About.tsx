@@ -1,11 +1,9 @@
-import Layout from "../components/Layout";
-
 function AboutPage() {
     return (
-        <Layout>
+        <div>
             <h2>Ini adalah Halaman About</h2>
             <p>Konten ini akan ditampilkan di dalam layout.</p>
-        </Layout>
+        </div>
     );
 }
 

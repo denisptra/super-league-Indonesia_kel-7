@@ -1,23 +1,18 @@
 // src/components/Layout.tsx
-
-import React from 'react';
+import { Outlet } from 'react-router-dom';
 import NavbarComponent from './Navbar';
 import FooterComponent from './Footer';
 
-type LayoutProps = {
-    children: React.ReactNode;
-};
-
-function Layout({ children }: LayoutProps) {
-    return (
-        <div className="layout-container">
-            <NavbarComponent />
-            <main className='pt-20'>
-                {children}
-            </main>
-            <FooterComponent />
-        </div>
-    );
+function Layout() {
+  return (
+    <div className="layout-container">
+      <NavbarComponent />
+      <main className="pt-20">
+        <Outlet /> {/* <- nested routes akan dirender di sini */}
+      </main>
+      <FooterComponent />
+    </div>
+  );
 }
 
 export default Layout;
