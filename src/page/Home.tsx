@@ -2,7 +2,27 @@ import { MatchCard } from "../components/MatchCard";
 
 // Data dummy pertandingan
 const matches = [
-  { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
+
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
+
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
+
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
+
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
+
+    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
     homeName: "Persija Jakarta", awayName: "Persib Bandung", 
     time: "20:00", date: "29 Sep 2025" },
 ];
