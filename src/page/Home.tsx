@@ -108,7 +108,7 @@ export default function HomePage() {
       </section>
 
       {/* Layout 3 kolom */}
-      <div className="flex gap-6">
+      <div className="flex gap-6 items-start">
         {/* Kolom kiri: Liga */}
         <aside className="w-80 bg-white rounded-2xl shadow">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
