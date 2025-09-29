@@ -1,6 +1,7 @@
 import { MatchCard } from "../components/MatchCard";
 import { TeamItem } from "../components/TeamItem";
 import { TodayMatchItem } from "../components/TodayMatchItem";
+import { LeagueMatchList } from "../components/LeagueMatchList";
 
 const matches = [
     { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
@@ -34,6 +35,23 @@ const topTeams = [
 ];
 
 const todayMatches = [
+  {
+    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
+    homeName: "Persija Jakarta",
+    awayLogo: "/images/Logo_Persib_Bandung.png",
+    awayName: "Persib Bandung",
+    score: "2 - 1",
+  },
+  {
+    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
+    homeName: "Persija Jakarta",
+    awayLogo: "/images/Logo_Persib_Bandung.png",
+    awayName: "Persib Bandung",
+    score: "2 - 1",
+  },
+];
+
+const superLeagueMatches = [
   {
     homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
     homeName: "Persija Jakarta",
@@ -94,9 +112,10 @@ export default function HomePage() {
                 </div>
             </section>
                 
-          <section className="bg-white rounded-2xl shadow p-4">
-            <h3 className="text-lg font-semibold mb-4">Indonesia Super League</h3>
-          </section>
+            <LeagueMatchList
+                title="Indonesia - Super League"
+                matches={superLeagueMatches}
+            />
         </main>
 
         {/* Kolom kanan: Berita */}
