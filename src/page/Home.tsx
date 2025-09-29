@@ -88,9 +88,11 @@ export default function HomePage() {
       {/* Layout 3 kolom */}
       <div className="flex gap-6">
         {/* Kolom kiri: Liga */}
-        <aside className="w-80 bg-white rounded-2xl shadow p-4">
-          <h3 className="text-lg font-semibold mb-4">Liga Teratas</h3>
-            <div className="flex flex-col gap-2">
+        <aside className="w-80 bg-white rounded-2xl shadow">
+            <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
+                <h3 className="text-sm font-semibold">Liga Teratas</h3>
+            </div>
+            <div className="p-4 flex flex-col gap-2">
                 {topTeams.map((team, i) => (
                 <TeamItem key={i} {...team} />
                 ))}
@@ -112,10 +114,16 @@ export default function HomePage() {
                 </div>
             </section>
                 
-            <LeagueMatchList
-                title="Indonesia - Super League"
-                matches={superLeagueMatches}
-            />
+            <section className="w-full bg-white rounded-2xl shadow">
+                <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
+                    <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
+                </div>
+                <div className="flex flex-col divide-y">
+                    {superLeagueMatches.map((match, i) => (
+                        <LeagueMatchList key={i} {...match} />
+                    ))}
+                </div>
+            </section>
         </main>
 
         {/* Kolom kanan: Berita */}
