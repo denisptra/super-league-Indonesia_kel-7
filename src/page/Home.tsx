@@ -2,28 +2,9 @@ import { MatchCard } from "../components/MatchCard";
 
 // Data dummy pertandingan
 const matches = [
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "12:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
-  { home: "https://placehold.co/40", away: "https://placehold.co/40", time: "20:00", date: "29 Sep 2025" },
+  { home: "https://placehold.co/40", away: "https://placehold.co/40", 
+    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
+    time: "20:00", date: "29 Sep 2025" },
 ];
 
 export default function HomePage() {
