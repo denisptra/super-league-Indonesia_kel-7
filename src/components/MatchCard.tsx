@@ -13,12 +13,12 @@ export function MatchCard({ home, away, homeName, awayName, time, date }: MatchC
       {/* Logo & VS */}
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col items-center">
-          <img src={home} className="w-10" />
+          <img src={home} className="h-10" />
           <span className="text-xs mt-1">{homeName}</span>
         </div>
         <span className="text-sm font-medium">VS</span>
         <div className="flex flex-col items-center">
-          <img src={away} className="w-10" />
+          <img src={away} className="h-10" />
           <span className="text-xs mt-1">{awayName}</span>
         </div>
       </div>
