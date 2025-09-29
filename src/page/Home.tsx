@@ -127,8 +127,10 @@ export default function HomePage() {
         </main>
 
         {/* Kolom kanan: Berita */}
-        <aside className="w-80 bg-white rounded-2xl shadow p-4">
-          <h3 className="text-lg font-semibold mb-4">Berita</h3>
+        <aside className="w-80 bg-white rounded-2xl shadow">
+            <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
+                <h3 className="text-sm font-semibold">Berita</h3>
+            </div>
           {/* ...map list berita */}
         </aside>
       </div>
