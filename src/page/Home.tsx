@@ -2,6 +2,7 @@ import { MatchCard } from "../components/MatchCard";
 import { TeamItem } from "../components/TeamItem";
 import { TodayMatchItem } from "../components/TodayMatchItem";
 import { LeagueMatchList } from "../components/LeagueMatchList";
+import { NewsItem } from "../components/NewsItem";
 
 const matches = [
     { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
@@ -65,6 +66,27 @@ const superLeagueMatches = [
     awayLogo: "/images/Logo_Persib_Bandung.png",
     awayName: "Persib Bandung",
     score: "2 - 1",
+  },
+];
+
+const newsList = [
+  {
+    image: "/images/Pep-Guardiola.webp",
+    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
+    source: "SI",
+    time: "1 jam Lalu",
+  },
+  {
+    image: "/images/Pep-Guardiola.webp",
+    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
+    source: "SI",
+    time: "1 jam Lalu",
+  },
+  {
+    image: "/images/Pep-Guardiola.webp",
+    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
+    source: "SI",
+    time: "1 jam Lalu",
   },
 ];
 
@@ -132,6 +154,11 @@ export default function HomePage() {
                 <h3 className="text-sm font-semibold">Berita</h3>
             </div>
           {/* ...map list berita */}
+            <div className="flex flex-col divide-y">
+                {newsList.map((news, i) => (
+                <NewsItem key={i} {...news} isBig={i === 0} />
+                ))}
+            </div>
         </aside>
       </div>
     </div>
