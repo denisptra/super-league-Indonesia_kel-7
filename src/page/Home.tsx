@@ -1,6 +1,6 @@
 import { MatchCard } from "../components/MatchCard";
+import { TeamItem } from "../components/TeamItem";
 
-// Data dummy pertandingan
 const matches = [
     { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
     homeName: "Persija Jakarta", awayName: "Persib Bandung", 
@@ -27,6 +27,11 @@ const matches = [
     time: "20:00", date: "29 Sep 2025" },
 ];
 
+const topTeams = [
+  { logo: "/images/Lambang_Persija_Jakarta.svg.png", name: "Persija Jakarta" },
+  { logo: "/images/Logo_Persib_Bandung.png", name: "Persib Bandung" },
+];
+
 export default function HomePage() {
   return (
     <div className="max-w-[1440px] mx-auto px-12 flex flex-col gap-7">
@@ -49,7 +54,11 @@ export default function HomePage() {
         {/* Kolom kiri: Liga */}
         <aside className="w-80 bg-white rounded-2xl shadow p-4">
           <h3 className="text-lg font-semibold mb-4">Liga Teratas</h3>
-          {/* ...map list tim */}
+            <div className="flex flex-col gap-2">
+                {topTeams.map((team, i) => (
+                <TeamItem key={i} {...team} />
+                ))}
+            </div>
         </aside>
 
         {/* Tengah */}
