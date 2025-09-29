@@ -14,7 +14,7 @@ const NavbarComponent = () => {
                         <Link to="/" className="hover:text-gray-200">Beranda</Link>
                     </li>
                     <li>
-                        <Link to="/about" className="hover:text-gray-200">About</Link>
+                        <Link to="/news" className="hover:text-gray-200">About</Link>
                     </li>
                     <li>
                         <Link to="/match" className="hover:text-gray-200">Pertandingan</Link>
