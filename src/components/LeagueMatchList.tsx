@@ -1,6 +1,4 @@
-import { TodayMatchItem } from "./TodayMatchItem";
-
-interface Match {
+interface LeagueMatchListProps {
   homeLogo: string;
   homeName: string;
   awayLogo: string;
@@ -8,22 +6,23 @@ interface Match {
   score: string;
 }
 
-interface LeagueMatchListProps {
-  title: string;
-  matches: Match[];
-}
-
-export function LeagueMatchList({ title, matches }: LeagueMatchListProps) {
+export function LeagueMatchList({ homeLogo, homeName, awayLogo, awayName, score }: LeagueMatchListProps) {
   return (
-    <aside className="w-full bg-white rounded-2xl shadow">
-      <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
-        <h3 className="text-sm font-semibold">{title}</h3>
+    <div className="flex items-center justify-between p-3">
+      {/* Tim Home */}
+      <div className="flex items-center gap-2 w-1/3">
+        <span className="text-sm font-medium">{homeName}</span>
+        <img src={homeLogo} alt={homeName} className="w-7" />
       </div>
-      <div className="flex flex-col divide-y">
-        {matches.map((match, i) => (
-          <TodayMatchItem key={i} {...match} />
-        ))}
+
+      {/* Skor */}
+      <div className="text-sm font-bold">{score}</div>
+
+      {/* Tim Away */}
+      <div className="flex items-center gap-2 w-1/3 justify-end">
+        <img src={awayLogo} alt={awayName} className="w-7" />
+        <span className="text-sm font-medium">{awayName}</span>
       </div>
-    </aside>
+    </div>
   );
 }
