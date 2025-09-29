@@ -70,7 +70,7 @@ const superLeagueMatches = [
 
 export default function HomePage() {
   return (
-    <div className="max-w-[1440px] mx-auto px-12 flex flex-col gap-7">
+    <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
       
       {/* Pertandingan */}
       <section className="bg-white rounded-2xl shadow p-5">
