@@ -7,7 +7,7 @@ function Layout() {
   return (
     <div className="layout-container">
       <NavbarComponent />
-      <main className="pt-20">
+      <main className="pt-18">
         <Outlet /> {/* <- nested routes akan dirender di sini */}
       </main>
       <FooterComponent />
