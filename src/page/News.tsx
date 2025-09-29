@@ -1,4 +1,4 @@
-function AboutPage() {
+function NewsPage() {
     return (
         <div>
             <h2>Ini adalah Halaman About</h2>
@@ -8,4 +8,4 @@ function AboutPage() {
 }
 
 // 5. Ekspor komponen HomePage
-export default AboutPage;
+export default NewsPage;

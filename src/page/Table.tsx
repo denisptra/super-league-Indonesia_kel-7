@@ -65,7 +65,10 @@ function TablePage() {
                                         </div>
                                     </td>
                                 </tr>
+                                {/* Single hard-coded row */}
+                                  
                             </tbody>
+                            
                         </table>
                     </div>
                 </div>
