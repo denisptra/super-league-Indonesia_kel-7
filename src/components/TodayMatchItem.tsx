@@ -6,7 +6,7 @@ interface TodayMatchItemProps {
   score: string; // contoh: "2 - 1"
 }
 
-export function TodayMatchItem({
+export default function TodayMatchItem({
   homeLogo,
   homeName,
   awayLogo,

@@ -7,7 +7,9 @@ interface MatchCardProps {
   date: string;
 }
 
-export function MatchCard({ home, away, homeName, awayName, time, date }: MatchCardProps) {
+
+export default function MatchCard({ home, away, homeName, awayName, time, date }: MatchCardProps) {
+
   return (
     <div className="w-56 h-[180px] bg-white rounded-xl shadow p-4 flex flex-col items-center justify-between flex-shrink-0">
       {/* Logo & VS */}
@@ -30,4 +32,6 @@ export function MatchCard({ home, away, homeName, awayName, time, date }: MatchC
       </div>
     </div>
   );
+
 }
+

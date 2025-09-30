@@ -6,7 +6,9 @@ interface LeagueMatchListProps {
   score: string;
 }
 
-export function LeagueMatchList({ homeLogo, homeName, awayLogo, awayName, score }: LeagueMatchListProps) {
+
+export default function LeagueMatchList({ homeLogo, homeName, awayLogo, awayName, score }: LeagueMatchListProps) {
+
   return (
     <div className="flex items-center justify-between p-3">
       {/* Tim Home */}
@@ -25,4 +27,6 @@ export function LeagueMatchList({ homeLogo, homeName, awayLogo, awayName, score 
       </div>
     </div>
   );
+
 }
+

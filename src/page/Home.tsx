@@ -1,8 +1,9 @@
-import { MatchCard } from "../components/MatchCard";
-import { TeamItem } from "../components/TeamItem";
-import { TodayMatchItem } from "../components/TodayMatchItem";
-import { LeagueMatchList } from "../components/LeagueMatchList";
-import { NewsItem } from "../components/NewsItem";
+
+import  MatchCard  from "../components/MatchCard";
+import  TeamItem  from "../components/TeamItem";
+import  TodayMatchItem  from "../components/TodayMatchItem";
+import  LeagueMatchList  from "../components/LeagueMatchList";
+import  NewsItem  from "../components/NewsItem";
 
 const matches = [
     { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 

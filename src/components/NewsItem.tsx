@@ -7,7 +7,9 @@ interface NewsItemProps {
   isBig?: boolean; // kalau true → style lebih besar (news utama)
 }
 
-export function NewsItem({ image, title, source, time, isBig }: NewsItemProps) {
+
+export default function NewsItem({ image, title, source, time, isBig }: NewsItemProps) {
+
   return (
     <div className={`flex ${isBig ? "flex-col" : "items-center gap-3"} p-3`}>
       <img
@@ -25,4 +27,6 @@ export function NewsItem({ image, title, source, time, isBig }: NewsItemProps) {
       </div>
     </div>
   );
+
 }
+
