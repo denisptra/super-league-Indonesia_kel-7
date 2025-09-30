@@ -10,5 +10,4 @@ function HomePage() {
     );
 }
 
-// 5. Ekspor komponen HomePage
 export default HomePage;
