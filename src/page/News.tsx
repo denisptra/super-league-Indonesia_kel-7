@@ -1,13 +1,11 @@
-import Layout from "../components/Layout";
-
-function AboutPage() {
+function NewsPage() {
     return (
-        <Layout>
+        <div>
             <h2>Ini adalah Halaman About</h2>
             <p>Konten ini akan ditampilkan di dalam layout.</p>
-        </Layout>
+        </div>
     );
 }
 
 // 5. Ekspor komponen HomePage
-export default AboutPage;
+export default NewsPage;
