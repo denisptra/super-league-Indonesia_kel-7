@@ -15,6 +15,7 @@ function App() {
         <Route path="about" element={<News />} />
         <Route path="match" element={<Match />} />
         <Route path="table" element={<Table />} />
+        {/*<Route path="news" element={<News />} />*/}
       </Route>
 
         <Route path="*" element={<div>404 Not Found</div>} />
