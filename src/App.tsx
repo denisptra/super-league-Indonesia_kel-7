@@ -24,3 +24,29 @@ function App() {
 }
 
 export default App;
+
+//test nnti hapus
+/*
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import UsersPage from "./page/UsersPage";
+import NewsPage from "./page/NewsPage";
+
+function App() {
+  return (
+    <BrowserRouter>
+      <nav className="p-4 bg-gray-200 flex gap-4">
+        <Link to="/users">Users</Link>
+        <Link to="/news">News</Link>
+      </nav>
+
+      <Routes>
+        <Route path="/users" element={<UsersPage />} />
+        <Route path="/news" element={<NewsPage />} />
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
+export default App;
+*/
+
