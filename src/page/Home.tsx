@@ -101,18 +101,17 @@ export default function HomePage() {
   useEffect(() => {
     fetch("http://localhost:3000/api/matches")
       .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched data:", data);
-        // Format tanggal sebelum diset
-        const formatted = data.map((m: Match) => {
-          const dateObj = new Date(m.date);
+      .then((result) => {
+        console.log("Fetched result:", result);
+        const matches = result.data; // ambil array dari field 'data'
 
+        const formatted = matches.map((m: any) => {
+          const dateObj = new Date(m.date);
           const formattedDate = dateObj.toLocaleDateString("id-ID", {
             day: "2-digit",
             month: "long",
             year: "numeric",
           });
-
           const formattedTime = dateObj.toLocaleTimeString("id-ID", {
             hour: "2-digit",
             minute: "2-digit",
@@ -120,11 +119,15 @@ export default function HomePage() {
           });
 
           return {
-            ...m,
+            id: m.id,
+            homeTeam: m.homeTeam,
+            awayTeam: m.awayTeam,
             formattedDate,
             formattedTime,
           };
         });
+
+        console.log("Formatted matches:", formatted);
         setMatches(formatted);
       })
       .catch((err) => console.error("Error:", err))
