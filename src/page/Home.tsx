@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+import type { Match } from "../types/Match";
+
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
 import  TodayMatchItem  from "../components/TodayMatchItem";
@@ -92,20 +94,6 @@ const newsList = [
     time: "1 jam Lalu",
   },
 ];
-
-interface Team {
-  id: number;
-  name: string;
-  // logo: string;
-  // short_name: string;
-}
-
-interface Match {
-  id: number;
-  homeTeam: Team;
-  awayTeam: Team;
-  date: string;
-}
 
 export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
