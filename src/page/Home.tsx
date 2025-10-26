@@ -113,11 +113,26 @@ export default function HomePage() {
       const enrichedMatches = matches.map((m: any) => {
         const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
         const away = allTeams.find((t: any) => t.id === m.awayTeam.id);
+        
+        const dateObj = new Date(m.date);
+        const formattedDate = dateObj.toLocaleDateString("id-ID", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric"
+        });
+
+        const formattedTime = dateObj.toLocaleTimeString("id-ID", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false
+        });
 
         return {
           ...m,
           homeTeam: { ...m.homeTeam, logo: home?.image || "/images/default-logo.png" },
           awayTeam: { ...m.awayTeam, logo: away?.image || "/images/default-logo.png" },
+          formattedDate,
+          formattedTime
         };
       });
 
