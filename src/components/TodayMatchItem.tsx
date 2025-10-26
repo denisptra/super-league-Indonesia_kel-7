@@ -19,9 +19,7 @@ export default function TodayMatchItem({ homeTeam, awayTeam, score_a, score_b }:
 
       {/* Skor */}
       <div className="flex text-sm font-bold">
-        {score_a}
-        <p> - </p>
-        {score_b}
+        <span>{score_a}</span>&nbsp;<span>-</span>&nbsp;<span>{score_b}</span>
       </div>
 
       {/* Tim Away */}
