@@ -1,10 +1,11 @@
-
+import { useEffect, useState } from "react";
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
 import  TodayMatchItem  from "../components/TodayMatchItem";
 import  LeagueMatchList  from "../components/LeagueMatchList";
 import  NewsItem  from "../components/NewsItem";
 
+/*
 const matches = [
     { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
     homeName: "Persija Jakarta", awayName: "Persib Bandung", 
@@ -30,6 +31,7 @@ const matches = [
     homeName: "Persija Jakarta", awayName: "Persib Bandung", 
     time: "20:00", date: "29 Sep 2025" },
 ];
+*/
 
 const topTeams = [
   { logo: "/images/Lambang_Persija_Jakarta.svg.png", name: "Persija Jakarta" },
@@ -91,7 +93,54 @@ const newsList = [
   },
 ];
 
+interface Team {
+  id: number;
+  name: string;
+  // logo: string;
+  // short_name: string;
+}
+
+interface Match {
+  id: number;
+  homeTeam: Team;
+  awayTeam: Team;
+  date: string;
+}
+
 export default function HomePage() {
+  const [matches, setMatches] = useState<Match[]>([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/matches")
+      .then((res) => res.json())
+      .then((data) => {
+        // Format tanggal sebelum diset
+        const formatted = data.map((m: Match) => {
+          const dateObj = new Date(m.date);
+
+          const formattedDate = dateObj.toLocaleDateString("id-ID", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
+          });
+
+          const formattedTime = dateObj.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false,
+          });
+
+          return {
+            ...m,
+            formattedDate,
+            formattedTime,
+          };
+        });
+        setMatches(formatted);
+      })
+      .catch((err) => console.error("Error:", err))
+  }, [])
+  
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
       
@@ -102,8 +151,8 @@ export default function HomePage() {
           <span className="text-sm text-neutral-500">Semua Pertandingan</span>
         </div>
         <div className="flex gap-4 overflow-x-auto">
-          {matches.map((m, i) => (
-            <MatchCard key={i} {...m} />
+          {matches.map((m, id) => (
+            <MatchCard key={id} {...m} />
           ))}
         </div>
       </section>
