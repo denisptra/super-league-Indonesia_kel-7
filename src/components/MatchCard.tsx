@@ -24,13 +24,13 @@ export default function MatchCard({ homeTeam, awayTeam, formattedDate, formatted
       {/* Logo & VS */}
       <div className="flex items-center justify-between w-full">
         <div className="flex flex-col items-center">
-          <img src="blom ada" alt={homeTeam.name} className="h-10" />
-          <span className="text-xs mt-1">{homeTeam.name}</span>
+          <img src={homeTeam.logo} alt={homeTeam.name} className="h-10" />
+          <span className="text-xs mt-1 text-center">{homeTeam.name}</span>
         </div>
         <span className="text-sm font-medium">VS</span>
         <div className="flex flex-col items-center">
-          <img src="blom ada" alt={awayTeam.name} className="h-10" />
-          <span className="text-xs mt-1">{awayTeam.name}</span>
+          <img src={awayTeam.logo} alt={awayTeam.name} className="h-10" />
+          <span className="text-xs mt-1 text-center">{awayTeam.name}</span>
         </div>
       </div>
 
