@@ -38,10 +38,12 @@ const matches = [
 ];
 */
 
+/*
 const topTeams = [
   { logo: "/images/Lambang_Persija_Jakarta.svg.png", name: "Persija Jakarta" },
   { logo: "/images/Logo_Persib_Bandung.png", name: "Persib Bandung" },
 ];
+*/
 
 /*
 const todayMatches = [
@@ -208,8 +210,8 @@ export default function HomePage() {
                 <h3 className="text-sm font-semibold">Liga Teratas</h3>
             </div>
             <div className="p-4 flex flex-col gap-2">
-                {topTeams.map((team, i) => (
-                <TeamItem key={i} {...team} />
+                {standings.map((team, id) => (
+                <TeamItem key={id} {...team} />
                 ))}
             </div>
         </aside>
