@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Match } from "../types/Match";
 import type { Team } from "../types/Match";
+import axios from "axios";
 
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
@@ -103,6 +104,7 @@ export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
+  const [standings, setStandings] = useState<any[]>([]);
 
   useEffect(() => {
     Promise.all([
@@ -149,6 +151,31 @@ export default function HomePage() {
         setTodayMatches(filtered);
       })
       .catch((err) => console.error("Error:", err));
+  }, []);
+
+  useEffect(() => {
+    const fetchStandings = async () => {
+      try {
+        const token = localStorage.getItem("token"); // ambil token JWT
+        if (!token) {
+          console.warn("Token tidak ditemukan, user belum login.");
+          return;
+        }
+
+        const res = await axios.get("http://localhost:3000/api/standings", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        setStandings(res.data.data); // sesuaikan dengan struktur respons backend
+        console.log("Standings:", res.data.data);
+      } catch (error) {
+        console.error("Gagal mengambil data standings:", error);
+      }
+    };
+
+    fetchStandings();
   }, []);
   
   return (
