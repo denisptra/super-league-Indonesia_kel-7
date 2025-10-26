@@ -8,5 +8,6 @@ export interface Match {
 
 export interface Team {
   name: string;
+  logo?: string;
   // image?: string;
 }
