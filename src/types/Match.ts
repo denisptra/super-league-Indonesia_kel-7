@@ -1,11 +1,11 @@
-interface Match {
+export interface Match {
   id: number;
   homeTeam: Team;
   awayTeam: Team;
   date: string;
 }
 
-interface Team {
+export interface Team {
   id: number;
   name: string;
   // logo: string;
