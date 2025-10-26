@@ -41,6 +41,7 @@ const topTeams = [
   { logo: "/images/Logo_Persib_Bandung.png", name: "Persib Bandung" },
 ];
 
+/*
 const todayMatches = [
   {
     homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
@@ -57,6 +58,7 @@ const todayMatches = [
     score: "2 - 1",
   },
 ];
+*/
 
 const superLeagueMatches = [
   {
@@ -101,45 +103,45 @@ export default function HomePage() {
   const [teams, setTeams] = useState<Team[]>([]);
 
   useEffect(() => {
-  Promise.all([
-    fetch("http://localhost:3000/api/matches").then((res) => res.json()),
-    fetch("http://localhost:3000/api/teams").then((res) => res.json())
-  ])
-    .then(([matchResult, teamResult]) => {
-      const matches = matchResult.data;
-      const allTeams = teamResult.data;
+    Promise.all([
+      fetch("http://localhost:3000/api/matches").then((res) => res.json()),
+      fetch("http://localhost:3000/api/teams").then((res) => res.json())
+    ])
+      .then(([matchResult, teamResult]) => {
+        const matches = matchResult.data;
+        const allTeams = teamResult.data;
 
-      // Gabungkan icon/logo dari teams ke masing-masing match
-      const enrichedMatches = matches.map((m: any) => {
-        const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
-        const away = allTeams.find((t: any) => t.id === m.awayTeam.id);
-        
-        const dateObj = new Date(m.date);
-        const formattedDate = dateObj.toLocaleDateString("id-ID", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric"
+        // Gabungkan icon/logo dari teams ke masing-masing match
+        const enrichedMatches = matches.map((m: any) => {
+          const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
+          const away = allTeams.find((t: any) => t.id === m.awayTeam.id);
+          
+          const dateObj = new Date(m.date);
+          const formattedDate = dateObj.toLocaleDateString("id-ID", {
+            day: "2-digit",
+            month: "long",
+            year: "numeric"
+          });
+
+          const formattedTime = dateObj.toLocaleTimeString("id-ID", {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false
+          });
+
+          return {
+            ...m,
+            homeTeam: { ...m.homeTeam, logo: home?.image || "/images/default-logo.png" },
+            awayTeam: { ...m.awayTeam, logo: away?.image || "/images/default-logo.png" },
+            formattedDate,
+            formattedTime
+          };
         });
 
-        const formattedTime = dateObj.toLocaleTimeString("id-ID", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: false
-        });
-
-        return {
-          ...m,
-          homeTeam: { ...m.homeTeam, logo: home?.image || "/images/default-logo.png" },
-          awayTeam: { ...m.awayTeam, logo: away?.image || "/images/default-logo.png" },
-          formattedDate,
-          formattedTime
-        };
-      });
-
-      setMatches(enrichedMatches);
-    })
-    .catch((err) => console.error("Error:", err));
-}, []);
+        setMatches(enrichedMatches);
+      })
+      .catch((err) => console.error("Error:", err));
+  }, []);
   
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
@@ -180,9 +182,13 @@ export default function HomePage() {
                     <button className="px-2">→</button>
                 </div>
                 <div className="flex flex-col divide-y">
+
+
+                    {/*
                     {todayMatches.map((match, i) => (
                     <TodayMatchItem key={i} {...match} />
                     ))}
+                    */}
                 </div>
             </section>
                 
