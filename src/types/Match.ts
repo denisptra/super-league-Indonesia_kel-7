@@ -1,5 +1,5 @@
 export interface Match {
-  id: number;
+  //id: number;
   homeTeam: Team;
   awayTeam: Team;
   date: string;
@@ -8,7 +8,7 @@ export interface Match {
 }
 
 export interface Team {
-  id: number;
+  //id: number;
   name: string;
   // logo: string;
   // short_name: string;
