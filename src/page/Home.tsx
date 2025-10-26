@@ -102,6 +102,7 @@ const newsList = [
 export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [todayMatches, setTodayMatches] = useState<Match[]>([]);
 
   useEffect(() => {
     Promise.all([
@@ -112,7 +113,6 @@ export default function HomePage() {
         const matches = matchResult.data;
         const allTeams = teamResult.data;
 
-        // Gabungkan icon/logo dari teams ke masing-masing match
         const enrichedMatches = matches.map((m: any) => {
           const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
           const away = allTeams.find((t: any) => t.id === m.awayTeam.id);
@@ -139,7 +139,18 @@ export default function HomePage() {
           };
         });
 
+        const today = new Date();
+        const todayMatches = enrichedMatches.filter((m: any) => {
+          const matchDate = new Date(m.date);
+          return (
+            matchDate.getFullYear() === today.getFullYear() &&
+            matchDate.getMonth() === today.getMonth() &&
+            matchDate.getDate() === today.getDate()
+          );
+        });
+
         setMatches(enrichedMatches);
+        setTodayMatches(todayMatches);
       })
       .catch((err) => console.error("Error:", err));
   }, []);
@@ -183,7 +194,7 @@ export default function HomePage() {
                     <button className="px-2">→</button>
                 </div>
                 <div className="flex flex-col divide-y">
-                    {matches.map((m, id) => (
+                    {todayMatches.map((m, id) => (
                     <TodayMatchItem key={id} {...m} />
                     ))}
                 </div>
