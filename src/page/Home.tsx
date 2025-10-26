@@ -7,6 +7,7 @@ import  TeamItem  from "../components/TeamItem";
 import  TodayMatchItem  from "../components/TodayMatchItem";
 import  LeagueMatchList  from "../components/LeagueMatchList";
 import  NewsItem  from "../components/NewsItem";
+//import { match } from "react-router-dom";
 
 /*
 const matches = [
@@ -182,13 +183,9 @@ export default function HomePage() {
                     <button className="px-2">→</button>
                 </div>
                 <div className="flex flex-col divide-y">
-
-
-                    {/*
-                    {todayMatches.map((match, i) => (
-                    <TodayMatchItem key={i} {...match} />
+                    {matches.map((m, id) => (
+                    <TodayMatchItem key={id} {...m} />
                     ))}
-                    */}
                 </div>
             </section>
                 
