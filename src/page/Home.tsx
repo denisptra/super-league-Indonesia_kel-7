@@ -185,9 +185,9 @@ export default function HomePage() {
         <main className="flex-1 flex flex-col gap-6">
             <section className="w-full bg-white rounded-2xl shadow">
                 <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl flex justify-between items-center">
-                    <button className="px-2">←</button>
+                    {/*<button className="px-2">←</button>*/}
                     <h3 className="text-sm font-semibold">Hari Ini</h3>
-                    <button className="px-2">→</button>
+                    {/*<button className="px-2">→</button>*/}
                 </div>
                 <div className="flex flex-col divide-y">
                   {todayMatches.length > 0 ? (
