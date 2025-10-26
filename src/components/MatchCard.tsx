@@ -1,10 +1,15 @@
 interface MatchCardProps {
+  homeTeam: Team;
+  awayTeam: Team;
+  date: string;
+  /*
   home: string;
   away: string;
   homeName: string;
   awayName: string;
   time: string;
   date: string;
+  */
 }
 
 
