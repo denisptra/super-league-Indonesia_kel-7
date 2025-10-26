@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Match } from "../types/Match";
+import type { Team } from "../types/Match";
 
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
@@ -97,41 +98,33 @@ const newsList = [
 
 export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
+  const [teams, setTeams] = useState<Team[]>([]);
 
   useEffect(() => {
-    fetch("http://localhost:3000/api/matches")
-      .then((res) => res.json())
-      .then((result) => {
-        console.log("Fetched result:", result);
-        const matches = result.data; // ambil array dari field 'data'
+  Promise.all([
+    fetch("http://localhost:3000/api/matches").then((res) => res.json()),
+    fetch("http://localhost:3000/api/teams").then((res) => res.json())
+  ])
+    .then(([matchResult, teamResult]) => {
+      const matches = matchResult.data;
+      const allTeams = teamResult.data;
 
-        const formatted = matches.map((m: any) => {
-          const dateObj = new Date(m.date);
-          const formattedDate = dateObj.toLocaleDateString("id-ID", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          });
-          const formattedTime = dateObj.toLocaleTimeString("id-ID", {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false,
-          });
+      // Gabungkan icon/logo dari teams ke masing-masing match
+      const enrichedMatches = matches.map((m: any) => {
+        const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
+        const away = allTeams.find((t: any) => t.id === m.awayTeam.id);
 
-          return {
-            //id: m.id,
-            homeTeam: m.homeTeam,
-            awayTeam: m.awayTeam,
-            formattedDate,
-            formattedTime,
-          };
-        });
+        return {
+          ...m,
+          homeTeam: { ...m.homeTeam, logo: home?.image || "/images/default-logo.png" },
+          awayTeam: { ...m.awayTeam, logo: away?.image || "/images/default-logo.png" },
+        };
+      });
 
-        console.log("Formatted matches:", formatted);
-        setMatches(formatted);
-      })
-      .catch((err) => console.error("Error:", err))
-  }, [])
+      setMatches(enrichedMatches);
+    })
+    .catch((err) => console.error("Error:", err));
+}, []);
   
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
