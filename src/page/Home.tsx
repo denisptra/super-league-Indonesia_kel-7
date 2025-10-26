@@ -139,18 +139,14 @@ export default function HomePage() {
           };
         });
 
-        const today = new Date();
-        const todayMatches = enrichedMatches.filter((m: any) => {
-          const matchDate = new Date(m.date);
-          return (
-            matchDate.getFullYear() === today.getFullYear() &&
-            matchDate.getMonth() === today.getMonth() &&
-            matchDate.getDate() === today.getDate()
-          );
-        });
-
         setMatches(enrichedMatches);
-        setTodayMatches(todayMatches);
+
+        const today = new Date().toDateString();
+        const filtered = enrichedMatches.filter((m: any) => {
+          const matchDate = new Date(m.date).toDateString();
+          return matchDate === today;
+        });
+        setTodayMatches(filtered);
       })
       .catch((err) => console.error("Error:", err));
   }, []);
