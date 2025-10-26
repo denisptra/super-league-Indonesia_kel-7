@@ -190,9 +190,15 @@ export default function HomePage() {
                     <button className="px-2">→</button>
                 </div>
                 <div className="flex flex-col divide-y">
-                    {todayMatches.map((m, id) => (
-                    <TodayMatchItem key={id} {...m} />
-                    ))}
+                  {todayMatches.length > 0 ? (
+                    todayMatches.map((m, id) => (
+                      <TodayMatchItem key={id} {...m} />
+                    ))
+                  ) : (
+                    <div className="py-6 text-center text-gray-500">
+                      Tidak ada pertandingan hari ini.
+                    </div>
+                  )}
                 </div>
             </section>
                 
