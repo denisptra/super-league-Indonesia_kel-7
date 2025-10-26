@@ -4,6 +4,8 @@ export interface Match {
   date: string;
   formattedDate?: string;
   formattedTime?: string;
+  score_a: number;
+  score_b: number;
 }
 
 export interface Team {
