@@ -102,6 +102,7 @@ export default function HomePage() {
     fetch("http://localhost:3000/api/matches")
       .then((res) => res.json())
       .then((data) => {
+        console.log("Fetched data:", data);
         // Format tanggal sebelum diset
         const formatted = data.map((m: Match) => {
           const dateObj = new Date(m.date);
