@@ -160,10 +160,16 @@ export default function HomePage() {
           <h2 className="text-xl font-semibold">Pertandingan</h2>
           <span className="text-sm text-neutral-500">Semua Pertandingan</span>
         </div>
-        <div className="flex gap-4 overflow-x-auto">
-          {matches.map((m, id) => (
-            <MatchCard key={id} {...m} />
-          ))}
+        <div className="overflow-x-auto">
+          <div
+            className={`flex gap-4 ${
+              matches.length <= 2 ? "justify-center" : "justify-start"
+            } min-w-max`}
+          >
+            {matches.map((m, id) => (
+              <MatchCard key={id} {...m} />
+            ))}
+          </div>
         </div>
       </section>
 
