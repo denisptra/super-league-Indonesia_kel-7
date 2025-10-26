@@ -132,8 +132,8 @@ export default function HomePage() {
 
           return {
             ...m,
-            homeTeam: { ...m.homeTeam, logo: home?.image || "/images/default-logo.png" },
-            awayTeam: { ...m.awayTeam, logo: away?.image || "/images/default-logo.png" },
+            homeTeam: { ...m.homeTeam, logo: home?.image || "/images/image-not-found.png" },
+            awayTeam: { ...m.awayTeam, logo: away?.image || "/images/image-not-found.png" },
             formattedDate,
             formattedTime
           };
