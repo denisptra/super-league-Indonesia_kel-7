@@ -22,7 +22,9 @@ export default function TodayMatchItem({
       </div>
 
       {/* Skor */}
-      <div className="text-sm font-bold">{score}</div>
+      <div className="text-sm font-bold">
+        -
+      </div>
 
       {/* Tim Away */}
       <div className="flex items-center gap-2 w-1/3 justify-end">
