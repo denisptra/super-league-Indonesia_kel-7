@@ -4,7 +4,6 @@ interface MatchCardProps {
   //id: number;
   homeTeam: Team;
   awayTeam: Team;
-  date: string;
   formattedDate?: string;
   formattedTime?: string;
   /*
@@ -18,7 +17,7 @@ interface MatchCardProps {
 }
 
 
-export default function MatchCard({ homeTeam, awayTeam, date, formattedDate, formattedTime }: MatchCardProps) {
+export default function MatchCard({ homeTeam, awayTeam, formattedDate, formattedTime }: MatchCardProps) {
 
   return (
     <div className="w-56 h-[180px] bg-white rounded-xl shadow p-4 flex flex-col items-center justify-between flex-shrink-0">
