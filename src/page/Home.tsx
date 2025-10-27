@@ -180,9 +180,14 @@ export default function HomePage() {
                 <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
             </div>
             <div className="flex flex-col divide-y">
-                {finishedMatches.length > 0 ? (finishedMatches.map((m, id) => (
+                {isLoading ? (
+                  <div className="py-6 text-center text-gray-500">
+                    Loading data...
+                  </div>
+                ) : finishedMatches.length > 0 ? (
+                  finishedMatches.map((m, id) => (
                     <MatchItem key={id} {...m} />
-                ))
+                  ))
                 ) : (
                   <div className="py-6 text-center text-gray-500">
                     Tidak ada pertandingan yang sudah selesai.
