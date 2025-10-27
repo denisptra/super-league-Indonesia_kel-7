@@ -156,7 +156,7 @@ export default function HomePage() {
                   </div>
                 ) : topTeams.length > 0 ? (
                   topTeams.map((t, id) => (
-                    <TeamItem key={id} {...t} />
+                    <TeamItem key={id} {...t} rank={id + 1}/>
                   ))
                 ) : (
                   <div className="py-6 text-center text-gray-500">
