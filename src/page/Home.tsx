@@ -102,6 +102,7 @@ const newsList = [
 export default function HomePage() {
   const [matches, setMatches] = useState<Match[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
+  const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
 
   useEffect(() => {
@@ -141,12 +142,19 @@ export default function HomePage() {
 
         setMatches(enrichedMatches);
 
+        const filteredIncoming = enrichedMatches.filter((m: any) => {
+          return m.status === "Incoming";
+        });
+
+        setIncomingMatches(filteredIncoming);
+
         const today = new Date().toDateString();
-        const filtered = enrichedMatches.filter((m: any) => {
+        const filteredToday = enrichedMatches.filter((m: any) => {
           const matchDate = new Date(m.date).toDateString();
           return matchDate === today;
         });
-        setTodayMatches(filtered);
+
+        setTodayMatches(filteredToday);
       })
       .catch((err) => console.error("Error:", err));
   }, []);
@@ -154,7 +162,7 @@ export default function HomePage() {
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
       
-      {/* Pertandingan */}
+      {/* Pertandingan incoming */}
       <section className="bg-white rounded-2xl shadow p-5">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Pertandingan</h2>
@@ -163,10 +171,10 @@ export default function HomePage() {
         <div className="overflow-x-auto">
           <div
             className={`flex gap-4 ${
-              matches.length <= 2 ? "justify-center" : "justify-start"
+              incomingMatches.length <= 2 ? "justify-center" : "justify-start"
             } min-w-max`}
           >
-            {matches.map((m, id) => (
+            {incomingMatches.map((m, id) => (
               <MatchCard key={id} {...m} />
             ))}
           </div>
@@ -189,6 +197,7 @@ export default function HomePage() {
 
         {/* Tengah */}
         <main className="flex-1 flex flex-col gap-6">
+            {/* Today match */}
             <section className="w-full bg-white rounded-2xl shadow">
                 <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl flex justify-between items-center">
                     {/*<button className="px-2">←</button>*/}
