@@ -156,28 +156,8 @@ export default function HomePage() {
             </div>
         </aside>
 
-        {/* Tengah */}
+        {/* finished matches */}
         <main className="flex-1 flex flex-col gap-6">
-            {/*
-            {/* Today match
-            <section className="w-full bg-white rounded-2xl shadow">
-                <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl flex justify-between items-center">
-                    <h3 className="text-sm font-semibold">Hari Ini</h3>
-                </div>
-                <div className="flex flex-col divide-y">
-                  {todayMatches.length > 0 ? (
-                    todayMatches.map((m, id) => (
-                      <MatchItem key={id} {...m} />
-                    ))
-                  ) : (
-                    <div className="py-6 text-center text-gray-500">
-                      Tidak ada pertandingan hari ini.
-                    </div>
-                  )}
-                </div>
-            </section>
-            */}
-            {/* finished matches */}
             <section className="w-full bg-white rounded-2xl shadow">
                 <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                     <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
