@@ -7,38 +7,11 @@ import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
 import  MatchItem  from "../components/MatchItem";
 import  NewsItem  from "../components/NewsItem";
-//import { match } from "react-router-dom";
-
-/*
-const newsList = [
-  {
-    image: "/images/Pep-Guardiola.webp",
-    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
-    source: "SI",
-    time: "1 jam Lalu",
-  },
-  {
-    image: "/images/Pep-Guardiola.webp",
-    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
-    source: "SI",
-    time: "1 jam Lalu",
-  },
-  {
-    image: "/images/Pep-Guardiola.webp",
-    title: "Real Madrid Explore Vinicius Junior Swap Liverpool's Final Konate Offer",
-    source: "SI",
-    time: "1 jam Lalu",
-  },
-];
-*/
 
 export default function HomePage() {
-  // const [matches, setMatches] = useState<Match[]>([]);
-  // const [teams, setTeams] = useState<Team[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [topTeams, setTopTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
-  const [todayMatches, setTodayMatches] = useState<Match[]>([]);
   const [finishedMatches, setFinishedMatches] = useState<Match[]>([]);
   const [recentNews, setRecentNews] = useState<News[]>([]);
 
@@ -81,22 +54,11 @@ export default function HomePage() {
           };
         });
 
-        {/* setMatches(enrichedMatches); */}
-
         const filteredIncoming = enrichedMatches.filter((m: any) => {
           return m.status === "Incoming";
         });
 
         setIncomingMatches(filteredIncoming);
-
-        {/* current logic: segala today */}
-        const today = new Date().toDateString();
-        const filteredToday = enrichedMatches.filter((m: any) => {
-          const matchDate = new Date(m.date).toDateString();
-          return matchDate === today;
-        });
-
-        setTodayMatches(filteredToday);
 
         const filteredFinished = enrichedMatches.filter((m: any) => {
           return m.status === "Finished";
@@ -130,14 +92,14 @@ export default function HomePage() {
 
         const enrichedRecent = news
           .map((n: any) => {
-            const createdAt = new Date(n.createdAt); // pastikan field di DB bernama 'createdAt'
+            const createdAt = new Date(n.createdAt);
             const now = new Date();
-            const diffMs = now.getTime() - createdAt.getTime(); // selisih dalam milidetik
-            const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // ubah ke jam
+            const diffMs = now.getTime() - createdAt.getTime();
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
 
             return {
               ...n,
-              hoursAgo: diffHours, // simpan informasi "berapa jam yang lalu"
+              hoursAgo: diffHours,
             };
           })
           .filter((n: any) => n.hoursAgo < 24); // hanya ambil berita < 24 jam
@@ -154,7 +116,6 @@ export default function HomePage() {
       <section className="bg-white rounded-2xl shadow p-5">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold">Pertandingan Mendatang</h2>
-          {/* <span className="text-sm text-neutral-500">Semua Pertandingan</span> */}
         </div>
         <div className="overflow-x-auto">
           <div
@@ -230,7 +191,6 @@ export default function HomePage() {
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Berita</h3>
             </div>
-          {/* ...map list berita */}
             <div className="flex flex-col divide-y">
                 {isLoading ? (
                   <div className="py-6 text-center text-gray-500">
@@ -248,7 +208,6 @@ export default function HomePage() {
             </div>
         </aside>
       </div>
-           
     </div>
   );
 }
