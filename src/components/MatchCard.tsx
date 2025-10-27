@@ -1,19 +1,10 @@
 import type { Team } from "../types/Match";
 
 interface MatchCardProps {
-  //id: number;
   homeTeam: Team;
   awayTeam: Team;
   formattedDate?: string;
   formattedTime?: string;
-  /*
-  home: string;
-  away: string;
-  homeName: string;
-  awayName: string;
-  time: string;
-  date: string;
-  */
 }
 
 
