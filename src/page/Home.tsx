@@ -158,9 +158,19 @@ export default function HomePage() {
                 <h3 className="text-sm font-semibold">Liga Teratas</h3>
             </div>
             <div className="p-4 flex flex-col gap-2">
-                {topTeams.map((t, id) => (
-                <TeamItem key={id} {...t} />
-                ))}
+                {isLoading ? (
+                  <div className="py-6 text-center text-gray-500">
+                    Loading data...
+                  </div>
+                ) : topTeams.length > 0 ? (
+                  topTeams.map((t, id) => (
+                    <TeamItem key={id} {...t} />
+                  ))
+                ) : (
+                  <div className="py-6 text-center text-gray-500">
+                    Tidak ada ranking liga.
+                  </div>
+                )}
             </div>
         </aside>
 
