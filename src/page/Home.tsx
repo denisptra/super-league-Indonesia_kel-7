@@ -32,12 +32,15 @@ const newsList = [
 export default function HomePage() {
   // const [matches, setMatches] = useState<Match[]>([]);
   // const [teams, setTeams] = useState<Team[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [topTeams, setTopTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
   const [finishedMatches, setFinishedMatches] = useState<Match[]>([]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     Promise.all([
       fetch("http://localhost:3000/api/matches").then((res) => res.json()),
       fetch("http://localhost:3000/api/teams").then((res) => res.json()),
@@ -111,7 +114,8 @@ export default function HomePage() {
         const topFive = sorted.slice(0, 5);
         setTopTeams(topFive);
       })
-      .catch((err) => console.error("Error:", err));
+      .catch((err) => console.error("Error:", err))
+      .finally(() => setIsLoading(false));
   }, []);
   
   return (
@@ -129,10 +133,14 @@ export default function HomePage() {
               incomingMatches.length <= 2 ? "justify-center" : "justify-start"
             } min-w-max`}
           >
-            {incomingMatches.length > 0 ? (
+            {isLoading ? (
+              <div className="py-6 text-center text-gray-500">
+                Loading data...
+              </div>
+            ) : incomingMatches.length > 0 ? (
               incomingMatches.map((m, id) => (
-              <MatchCard key={id} {...m} />
-            ))
+                <MatchCard key={id} {...m} />
+              ))
             ) : (
               <div className="py-6 text-center text-gray-500">
                 Tidak ada pertandingan mendatang.
