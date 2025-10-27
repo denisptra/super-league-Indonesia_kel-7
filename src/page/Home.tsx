@@ -182,7 +182,7 @@ export default function HomePage() {
               <div className="py-6 text-center text-gray-500">
                 Tidak ada pertandingan mendatang.
               </div>
-            )} {/* tambahin if statement */}
+            )}
           </div>
         </div>
       </section>
