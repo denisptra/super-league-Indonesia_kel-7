@@ -5,7 +5,6 @@ import type { Team } from "../types/Match";
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
 import  MatchItem  from "../components/MatchItem";
-// import  LeagueMatchList  from "../components/LeagueMatchList";
 import  NewsItem  from "../components/NewsItem";
 //import { match } from "react-router-dom";
 
@@ -61,6 +60,7 @@ const todayMatches = [
 ];
 */
 
+/*
 const superLeagueMatches = [
   {
     homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
@@ -77,6 +77,7 @@ const superLeagueMatches = [
     score: "2 - 1",
   },
 ];
+*/
 
 const newsList = [
   {
