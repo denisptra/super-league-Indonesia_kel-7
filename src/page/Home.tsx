@@ -145,7 +145,7 @@ export default function HomePage() {
       {/* Layout 3 kolom */}
       <div className="flex gap-6 items-start">
         {/* Kolom kiri: top teams*/}
-        <aside className="w-80 bg-white rounded-2xl shadow">
+        <aside className="w-full bg-white rounded-2xl shadow">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Liga Teratas</h3>
             </div>
@@ -157,26 +157,24 @@ export default function HomePage() {
         </aside>
 
         {/* finished matches */}
-        <main className="flex-1 flex flex-col gap-6">
-            <section className="w-full bg-white rounded-2xl shadow">
-                <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
-                    <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
-                </div>
-                <div className="flex flex-col divide-y">
-                    {finishedMatches.length > 0 ? (finishedMatches.map((m, id) => (
-                        <MatchItem key={id} {...m} />
-                    ))
-                    ) : (
-                      <div className="py-6 text-center text-gray-500">
-                        Tidak ada pertandingan yang sudah selesai.
-                      </div>
-                    )}
-                </div>
-            </section>
-        </main>
+        <aside className="w-full bg-white rounded-2xl shadow">
+            <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
+                <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
+            </div>
+            <div className="flex flex-col divide-y">
+                {finishedMatches.length > 0 ? (finishedMatches.map((m, id) => (
+                    <MatchItem key={id} {...m} />
+                ))
+                ) : (
+                  <div className="py-6 text-center text-gray-500">
+                    Tidak ada pertandingan yang sudah selesai.
+                  </div>
+                )}
+            </div>
+        </aside>
 
         {/* Kolom kanan: Berita */}
-        <aside className="w-80 bg-white rounded-2xl shadow">
+        <aside className="w-full bg-white rounded-2xl shadow">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Berita</h3>
             </div>
