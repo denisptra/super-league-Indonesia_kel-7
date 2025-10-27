@@ -66,14 +66,16 @@ export default function HomePage() {
         
         setFinishedMatches(filteredFinished);
 
-        const enrichedTeams = allTeams.map((t: any) => {
-          const standing = standings.find((s: any) => s.id === t.id);
+        const enrichedTeams = allTeams
+          .map((t: any) => {
+            const standing = standings?.find((s: any) => s.id === t.id);
 
-          return {
-            ...t,
-            rank: standing?.rank || "Unranked"
-          };
-        });
+            return {
+              ...t,
+              rank: standing?.rank || 0
+            };
+          })
+          .filter((t: any) => { return  t.rank !== 0 } );
 
         // order dlu rank
         const sorted = enrichedTeams.sort((a: any, b: any) => a.rank - b.rank);
