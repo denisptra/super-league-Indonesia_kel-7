@@ -165,8 +165,8 @@ export default function HomePage() {
       {/* Pertandingan incoming */}
       <section className="bg-white rounded-2xl shadow p-5">
         <div className="flex justify-between items-center mb-4">
-          <h2 className="text-xl font-semibold">Pertandingan</h2>
-          <span className="text-sm text-neutral-500">Semua Pertandingan</span>
+          <h2 className="text-xl font-semibold">Pertandingan Mendatang</h2>
+          {/* <span className="text-sm text-neutral-500">Semua Pertandingan</span> */}
         </div>
         <div className="overflow-x-auto">
           <div
