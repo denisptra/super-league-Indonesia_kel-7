@@ -174,9 +174,15 @@ export default function HomePage() {
               incomingMatches.length <= 2 ? "justify-center" : "justify-start"
             } min-w-max`}
           >
-            {incomingMatches.map((m, id) => (
+            {incomingMatches.length > 0 ? (
+              incomingMatches.map((m, id) => (
               <MatchCard key={id} {...m} />
-            ))}
+            ))
+            ) : (
+              <div className="py-6 text-center text-gray-500">
+                Tidak ada pertandingan mendatang.
+              </div>
+            )} {/* tambahin if statement */}
           </div>
         </div>
       </section>
