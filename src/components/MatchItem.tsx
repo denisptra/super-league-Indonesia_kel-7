@@ -1,14 +1,13 @@
 import type { Team } from "../types/Match";
 
-// butuh logo dan score dari team 1 dan 2
-interface TodayMatchItemProps {
+interface MatchItemProps {
   homeTeam: Team;
   awayTeam: Team;
   score_a: number;
   score_b: number;
 }
 
-export default function TodayMatchItem({ homeTeam, awayTeam, score_a, score_b }: TodayMatchItemProps) {
+export default function MatchItem({ homeTeam, awayTeam, score_a, score_b }: MatchItemProps) {
   return (
     <div className="flex items-center justify-between p-3">
       {/* Tim Home */}

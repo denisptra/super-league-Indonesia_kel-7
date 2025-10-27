@@ -4,8 +4,8 @@ import type { Team } from "../types/Match";
 
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
-import  TodayMatchItem  from "../components/TodayMatchItem";
-import  LeagueMatchList  from "../components/LeagueMatchList";
+import  MatchItem  from "../components/MatchItem";
+// import  LeagueMatchList  from "../components/LeagueMatchList";
 import  NewsItem  from "../components/NewsItem";
 //import { match } from "react-router-dom";
 
@@ -104,6 +104,7 @@ export default function HomePage() {
   const [teams, setTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
+  const [finishedMatches, setFinishedMatches] = useState<Match[]>([]);
 
   useEffect(() => {
     Promise.all([
@@ -155,6 +156,12 @@ export default function HomePage() {
         });
 
         setTodayMatches(filteredToday);
+
+        const filteredFinished = enrichedMatches.filter((m: any) => {
+          return m.status === "Finished";
+        });
+        
+        setFinishedMatches(filteredFinished);
       })
       .catch((err) => console.error("Error:", err));
   }, []);
@@ -213,7 +220,7 @@ export default function HomePage() {
                 <div className="flex flex-col divide-y">
                   {todayMatches.length > 0 ? (
                     todayMatches.map((m, id) => (
-                      <TodayMatchItem key={id} {...m} />
+                      <MatchItem key={id} {...m} />
                     ))
                   ) : (
                     <div className="py-6 text-center text-gray-500">
@@ -229,9 +236,14 @@ export default function HomePage() {
                     <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
                 </div>
                 <div className="flex flex-col divide-y">
-                    {superLeagueMatches.map((match, i) => (
-                        <LeagueMatchList key={i} {...match} />
-                    ))}
+                    {finishedMatches.length > 0 ? (finishedMatches.map((m, id) => (
+                        <MatchItem key={id} {...m} />
+                    ))
+                    ) : (
+                      <div className="py-6 text-center text-gray-500">
+                        Tidak ada pertandingan yang sudah selesai.
+                      </div>
+                    )}
                 </div>
             </section>
         </main>

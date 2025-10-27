@@ -6,6 +6,7 @@ export interface Match {
   formattedTime?: string;
   score_a: number;
   score_b: number;
+  status: string;
 }
 
 export interface Team {
