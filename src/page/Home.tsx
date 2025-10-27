@@ -30,8 +30,8 @@ const newsList = [
 ];
 
 export default function HomePage() {
-  {/* const [matches, setMatches] = useState<Match[]>([]); */}
-  const [teams, setTeams] = useState<Team[]>([]);
+  // const [matches, setMatches] = useState<Match[]>([]);
+  // const [teams, setTeams] = useState<Team[]>([]);
   const [topTeams, setTopTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
