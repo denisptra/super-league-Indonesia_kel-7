@@ -8,79 +8,6 @@ import  MatchItem  from "../components/MatchItem";
 import  NewsItem  from "../components/NewsItem";
 //import { match } from "react-router-dom";
 
-/*
-const matches = [
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-
-    { home: "/images/Lambang_Persija_Jakarta.svg.png", away: "/images/Logo_Persib_Bandung.png", 
-    homeName: "Persija Jakarta", awayName: "Persib Bandung", 
-    time: "20:00", date: "29 Sep 2025" },
-];
-*/
-
-/*
-const topTeams = [
-  { logo: "/images/Lambang_Persija_Jakarta.svg.png", name: "Persija Jakarta" },
-  { logo: "/images/Logo_Persib_Bandung.png", name: "Persib Bandung" },
-];
-*/
-
-/*
-const todayMatches = [
-  {
-    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
-    homeName: "Persija Jakarta",
-    awayLogo: "/images/Logo_Persib_Bandung.png",
-    awayName: "Persib Bandung",
-    score: "2 - 1",
-  },
-  {
-    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
-    homeName: "Persija Jakarta",
-    awayLogo: "/images/Logo_Persib_Bandung.png",
-    awayName: "Persib Bandung",
-    score: "2 - 1",
-  },
-];
-*/
-
-/*
-const superLeagueMatches = [
-  {
-    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
-    homeName: "Persija Jakarta",
-    awayLogo: "/images/Logo_Persib_Bandung.png",
-    awayName: "Persib Bandung",
-    score: "2 - 1",
-  },
-  {
-    homeLogo: "/images/Lambang_Persija_Jakarta.svg.png",
-    homeName: "Persija Jakarta",
-    awayLogo: "/images/Logo_Persib_Bandung.png",
-    awayName: "Persib Bandung",
-    score: "2 - 1",
-  },
-];
-*/
-
 const newsList = [
   {
     image: "/images/Pep-Guardiola.webp",
@@ -186,26 +113,6 @@ export default function HomePage() {
       })
       .catch((err) => console.error("Error:", err));
   }, []);
-
-  /*
-  useEffect(() => {
-    fetch("http://localhost:3000/api/teams")
-      .then((res) => res.json())
-      .then((teams) => {
-        const allTeams = teams.data;
-      })
-      .catch((err) => console.error("Error:", err));
-
-    fetch("http://localhost:3000/api/standings")
-      .then((res) => res.json())
-      .then((result) => {
-        const rankedTeams = result.data;
-        const topFive = rankedTeams.slice(0, 5);
-        setTopTeams(topFive);
-      })
-      .catch((err) => console.error("Error:", err));
-  }, []);
-  */
   
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
