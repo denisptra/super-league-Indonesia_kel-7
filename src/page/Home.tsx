@@ -101,7 +101,7 @@ const newsList = [
 ];
 
 export default function HomePage() {
-  const [matches, setMatches] = useState<Match[]>([]);
+  {/* const [matches, setMatches] = useState<Match[]>([]); */}
   const [teams, setTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
@@ -142,7 +142,7 @@ export default function HomePage() {
           };
         });
 
-        setMatches(enrichedMatches);
+        {/* setMatches(enrichedMatches); */}
 
         const filteredIncoming = enrichedMatches.filter((m: any) => {
           return m.status === "Incoming";
