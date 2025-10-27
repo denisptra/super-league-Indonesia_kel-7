@@ -36,10 +36,12 @@ const matches = [
 ];
 */
 
+/*
 const topTeams = [
   { logo: "/images/Lambang_Persija_Jakarta.svg.png", name: "Persija Jakarta" },
   { logo: "/images/Logo_Persib_Bandung.png", name: "Persib Bandung" },
 ];
+*/
 
 /*
 const todayMatches = [
@@ -103,6 +105,7 @@ const newsList = [
 export default function HomePage() {
   {/* const [matches, setMatches] = useState<Match[]>([]); */}
   const [teams, setTeams] = useState<Team[]>([]);
+  const [topTeams, setTopTeams] = useState<Team[]>([]);
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
   const [finishedMatches, setFinishedMatches] = useState<Match[]>([]);
@@ -110,11 +113,13 @@ export default function HomePage() {
   useEffect(() => {
     Promise.all([
       fetch("http://localhost:3000/api/matches").then((res) => res.json()),
-      fetch("http://localhost:3000/api/teams").then((res) => res.json())
+      fetch("http://localhost:3000/api/teams").then((res) => res.json()),
+      fetch("http://localhost:3000/api/standings").then((res) => res.json())
     ])
-      .then(([matchResult, teamResult]) => {
+      .then(([matchResult, teamResult, standingResult]) => {
         const matches = matchResult.data;
         const allTeams = teamResult.data;
+        const standings = standingResult.data;
 
         const enrichedMatches = matches.map((m: any) => {
           const home = allTeams.find((t: any) => t.id === m.homeTeam.id);
@@ -164,9 +169,43 @@ export default function HomePage() {
         });
         
         setFinishedMatches(filteredFinished);
+
+        const enrichedTeams = allTeams.map((t: any) => {
+          const standing = standings.find((s: any) => s.id === t.id);
+
+          return {
+            ...t,
+            rank: standing?.rank || "Unranked"
+          };
+        });
+
+        // order dlu rank
+        const sorted = enrichedTeams.sort((a: any, b: any) => a.rank - b.rank);
+        const topFive = sorted.slice(0, 5);
+        setTopTeams(topFive);
       })
       .catch((err) => console.error("Error:", err));
   }, []);
+
+  /*
+  useEffect(() => {
+    fetch("http://localhost:3000/api/teams")
+      .then((res) => res.json())
+      .then((teams) => {
+        const allTeams = teams.data;
+      })
+      .catch((err) => console.error("Error:", err));
+
+    fetch("http://localhost:3000/api/standings")
+      .then((res) => res.json())
+      .then((result) => {
+        const rankedTeams = result.data;
+        const topFive = rankedTeams.slice(0, 5);
+        setTopTeams(topFive);
+      })
+      .catch((err) => console.error("Error:", err));
+  }, []);
+  */
   
   return (
     <div className="max-w-[1440px] mx-auto px-12 pt-7 pb-7 flex flex-col gap-7">
@@ -198,14 +237,14 @@ export default function HomePage() {
 
       {/* Layout 3 kolom */}
       <div className="flex gap-6 items-start">
-        {/* Kolom kiri: Liga */}
+        {/* Kolom kiri: top teams*/}
         <aside className="w-80 bg-white rounded-2xl shadow">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Liga Teratas</h3>
             </div>
             <div className="p-4 flex flex-col gap-2">
-                {topTeams.map((team, i) => (
-                <TeamItem key={i} {...team} />
+                {topTeams.map((t, id) => (
+                <TeamItem key={id} {...t} />
                 ))}
             </div>
         </aside>

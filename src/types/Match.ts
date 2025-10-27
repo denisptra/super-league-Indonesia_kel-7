@@ -10,7 +10,8 @@ export interface Match {
 }
 
 export interface Team {
+  rank: number;
   name: string;
   logo?: string;
-  // image?: string;
+  image: string;
 }
