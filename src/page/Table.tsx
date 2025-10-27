@@ -1,80 +1,97 @@
-function TablePage() {
-    return (
-        <div className="p-4">
-            <div className="rounded-lg border-2" style={{ borderColor: '#0A518C' }}>
-                <div className="px-4 py-2 font-semibold text-white" style={{ backgroundColor: '#0A518C' }}>
-                    Liga teratas
-                </div>
+import { useEffect, useState } from "react";
 
-
-                <div className="p-4 bg-white">
-                    <div className="overflow-x-auto">
-                        <table className="min-w-full text-sm">
-                            <thead>
-                                <tr className="text-left text-xs text-gray-600">
-                                    <th className="w-10">#</th>
-                                    <th>Team</th>
-                                    <th className="w-12 text-center">M</th>
-                                    <th className="w-12 text-center">W</th>
-                                    <th className="w-12 text-center">D</th>
-                                    <th className="w-12 text-center">L</th>
-                                    <th className="w-16 text-center">GD</th>
-                                    <th className="w-16 text-center">Poin</th>
-                                    <th className="w-40 text-right">Form</th>
-                                </tr>
-                            </thead>
-
-
-                            <tbody>
-                                {/* Single hard-coded row */}
-                                <tr className="border-t">
-                                    <td className="py-3 align-middle">1.</td>
-
-
-                                    <td className="py-2 align-middle">
-                                        <div className="flex items-center">
-                                            <img
-                                                src="/logo-club.png" 
-                                                alt="club logo"
-                                                className="w-6 h-6 rounded-full mr-3 object-cover"
-                                            />
-
-                                            {/* klub */}
-                                            <div>
-                                                <div className="font-medium">Persija Jakarta</div>
-                                                <div className="text-xs text-gray-500">Persija Jakarta</div>
-                                            </div>
-                                        </div>
-                                    </td>
-
-                                    {/* Statistik */}
-                                    <td className="text-center align-middle">4</td>
-                                    <td className="text-center align-middle">4</td>
-                                    <td className="text-center align-middle">0</td>
-                                    <td className="text-center align-middle">0</td>
-                                    <td className="text-center align-middle">+4</td>
-                                    <td className="text-center align-middle">12</td>
-
-                                    {/* Keterangan WLD */}
-                                    <td className="align-middle">
-                                        <div className="flex justify-end items-center space-x-2">
-                                            <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-green-500 text-white">W</span>
-                                            <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-gray-500 text-white">D</span>
-                                            <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-red-500 text-white">L</span>
-                                            <span className="inline-block text-xs font-semibold px-2 py-1 rounded-full bg-green-500 text-white">W</span>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {/* Single hard-coded row */}
-                                  
-                            </tbody>
-                            
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    );
+interface ClubStanding {
+  rank: number;
+  id: number;
+  name: string;
+  short_name: string;
+  image: string;
+  played: number;
+  wins: number;
+  draws: number;
+  losses: number;
+  goalsDifference: number;
+  points: number;
 }
 
-export default TablePage;
+const Table = () => {
+  const [standings, setStandings] = useState<ClubStanding[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  // Fetch standings data 
+  useEffect(() => {
+    const fetchStandings = async () => {
+      try {
+        const token = localStorage.getItem("token");
+
+        const res = await fetch("http://localhost:3000/api/standings", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const result = await res.json();
+
+        // set standings data
+        setStandings(result.data);
+        // error handling
+      } catch (err) {
+        console.error("Gagal mengambil data standings:", err);
+        setError("Tidak bisa memuat data klasemen. Pastikan sudah login atau server aktif.");
+        // hasil loading selesai
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchStandings();
+  }, []);
+    // Render states
+  if (loading) return <p>Memuat data klasemen...</p>;
+  if (error) return <p className="text-red-500">{error}</p>;
+
+  return (
+    <div className="p-6">
+      <h1 className="text-3xl font-bold mb-4">Klasemen Super League</h1>
+
+      <table className="min-w-full border border-gray-300 shadow-md rounded-lg overflow-hidden">
+        <thead className="bg-gray-100">
+          <tr>
+            <th className="p-2 text-center">#</th>
+            <th className="p-2 text-left">Klub</th>
+            <th className="p-2 text-center">M</th>
+            <th className="p-2 text-center">M</th>
+            <th className="p-2 text-center">S</th>
+            <th className="p-2 text-center">K</th>
+            <th className="p-2 text-center">GD</th>
+            <th className="p-2 text-center">Poin</th>
+          </tr>
+        </thead>
+        <tbody>
+          {standings.map((team) => (
+            <tr key={team.id} className="border-t hover:bg-gray-50">
+              <td className="p-2 text-center font-medium">{team.rank}</td>
+              <td className="flex items-center gap-2 p-2">
+                <img src={team.image} alt={team.name} className="w-6 h-6" />
+                <span>{team.name}</span>
+              </td>
+              <td className="p-2 text-center">{team.played}</td>
+              <td className="p-2 text-center">{team.wins}</td>
+              <td className="p-2 text-center">{team.draws}</td>
+              <td className="p-2 text-center">{team.losses}</td>
+              <td className="p-2 text-center">{team.goalsDifference}</td>
+              <td className="p-2 text-center font-semibold">{team.points}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+};
+
+export default Table;

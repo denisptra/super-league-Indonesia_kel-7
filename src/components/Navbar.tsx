@@ -4,7 +4,7 @@ import Apple from '../assets/Apple.svg';
 
 const NavbarComponent = () => {
     return (
-        <nav className="text-white shadow-md fixed w-full" style={{ backgroundColor: "#0A518C", fontFamily: "Roboto" }}>
+        <nav className="text-white shadow-md fixed w-full z-50" style={{ backgroundColor: "#0A518C", fontFamily: "Roboto" }}>
             <div className="max-w-screen-xl flex items-center justify-between mx-auto py-4">
                 <Link to="/" className="w-32">
                     <img src={Logo} alt="Logo Super-League" />
