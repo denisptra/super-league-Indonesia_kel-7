@@ -65,7 +65,7 @@ const Table = () => {
 
   if (loading)
     return (
-      <p className="text-center mt-10 text-gray-500 animate-pulse">
+      <p className="text-center py-10 text-gray-500 animate-pulse">
         🔄 Memuat data klasemen...
       </p>
     );

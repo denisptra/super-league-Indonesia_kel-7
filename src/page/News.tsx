@@ -33,7 +33,7 @@ const News = () => {
   if (loading) {
     return (
       <div className="text-center py-10 text-gray-500 text-lg">
-        Memuat berita...
+        🔄 Memuat berita...
       </div>
     );
   }
