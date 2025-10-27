@@ -145,7 +145,7 @@ export default function HomePage() {
       {/* Layout 3 kolom */}
       <div className="flex gap-6 items-start">
         {/* Kolom kiri: top teams*/}
-        <aside className="w-full bg-white rounded-2xl shadow">
+        <aside className="w-full bg-white rounded-2xl shadow shrink-3">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Liga Teratas</h3>
             </div>
@@ -157,7 +157,7 @@ export default function HomePage() {
         </aside>
 
         {/* finished matches */}
-        <aside className="w-full bg-white rounded-2xl shadow">
+        <aside className="w-full bg-white rounded-2xl shadow shrink-2">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Indonesia - Super League</h3>
             </div>
@@ -174,7 +174,7 @@ export default function HomePage() {
         </aside>
 
         {/* Kolom kanan: Berita */}
-        <aside className="w-full bg-white rounded-2xl shadow">
+        <aside className="w-full bg-white rounded-2xl shadow shrink-3">
             <div className="bg-[#0A518C] text-white px-4 py-2 rounded-t-2xl">
                 <h3 className="text-sm font-semibold">Berita</h3>
             </div>
