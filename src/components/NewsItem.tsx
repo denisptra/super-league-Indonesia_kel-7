@@ -1,14 +1,13 @@
 // src/components/NewsItem.tsx
 interface NewsItemProps {
-  image: string;
   title: string;
-  source: string;
-  time: string;
-  isBig?: boolean; // kalau true → style lebih besar (news utama)
+  image: string;
+  hoursAgo?: number;
+  isBig?: boolean;
 }
 
 
-export default function NewsItem({ image, title, source, time, isBig }: NewsItemProps) {
+export default function NewsItem({ title, image, hoursAgo, isBig }: NewsItemProps) {
 
   return (
     <div className={`flex ${isBig ? "flex-col" : "items-center gap-3"} p-3`}>
@@ -22,7 +21,7 @@ export default function NewsItem({ image, title, source, time, isBig }: NewsItem
           {title}
         </h4>
         <p className="text-xs text-neutral-500">
-          {source} · {time}
+          {hoursAgo} jam lalu
         </p>
       </div>
     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import type { Match } from "../types/Match";
 import type { Team } from "../types/Match";
+import type { News } from "../types/News";
 
 import  MatchCard  from "../components/MatchCard";
 import  TeamItem  from "../components/TeamItem";
@@ -8,6 +9,7 @@ import  MatchItem  from "../components/MatchItem";
 import  NewsItem  from "../components/NewsItem";
 //import { match } from "react-router-dom";
 
+/*
 const newsList = [
   {
     image: "/images/Pep-Guardiola.webp",
@@ -28,6 +30,7 @@ const newsList = [
     time: "1 jam Lalu",
   },
 ];
+*/
 
 export default function HomePage() {
   // const [matches, setMatches] = useState<Match[]>([]);
@@ -37,6 +40,7 @@ export default function HomePage() {
   const [incomingMatches, setIncomingMatches] = useState<Match[]>([]);
   const [todayMatches, setTodayMatches] = useState<Match[]>([]);
   const [finishedMatches, setFinishedMatches] = useState<Match[]>([]);
+  const [recentNews, setRecentNews] = useState<News[]>([]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -116,6 +120,31 @@ export default function HomePage() {
       })
       .catch((err) => console.error("Error:", err))
       .finally(() => setIsLoading(false));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/api/news")
+      .then((res) => res.json())
+      .then((newsResult) => {
+        const news = newsResult.data;
+
+        const enrichedRecent = news
+          .map((n: any) => {
+            const createdAt = new Date(n.createdAt); // pastikan field di DB bernama 'createdAt'
+            const now = new Date();
+            const diffMs = now.getTime() - createdAt.getTime(); // selisih dalam milidetik
+            const diffHours = Math.floor(diffMs / (1000 * 60 * 60)); // ubah ke jam
+
+            return {
+              ...n,
+              hoursAgo: diffHours, // simpan informasi "berapa jam yang lalu"
+            };
+          })
+          .filter((n: any) => n.hoursAgo < 24); // hanya ambil berita < 24 jam
+
+        setRecentNews(enrichedRecent);
+      })
+      .catch((err) => console.error("Error:", err));
   }, []);
   
   return (
@@ -203,9 +232,19 @@ export default function HomePage() {
             </div>
           {/* ...map list berita */}
             <div className="flex flex-col divide-y">
-                {newsList.map((news, i) => (
-                <NewsItem key={i} {...news} isBig={i === 0} />
-                ))}
+                {isLoading ? (
+                  <div className="py-6 text-center text-gray-500">
+                    Loading data...
+                  </div>
+                ) : recentNews.length > 0 ? (
+                  recentNews.map((n, id) => (
+                    <NewsItem key={id} {...n} isBig={id === 0} />
+                  ))
+                ) : (
+                  <div className="py-6 text-center text-gray-500">
+                    Tidak ada berita terkini.
+                  </div>
+                )}
             </div>
         </aside>
       </div>
