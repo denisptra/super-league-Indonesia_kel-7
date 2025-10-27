@@ -150,6 +150,7 @@ export default function HomePage() {
 
         setIncomingMatches(filteredIncoming);
 
+        {/* current logic: segala today */}
         const today = new Date().toDateString();
         const filteredToday = enrichedMatches.filter((m: any) => {
           const matchDate = new Date(m.date).toDateString();
