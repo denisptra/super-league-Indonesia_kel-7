@@ -21,9 +21,9 @@ const Sidebar: React.FC = () => {
   const menuItems = [
     { name: "Dashboard", path: `${basePath}`, icon: "📊", roles: ["Administrator"] },
     { name: "Users", path: `${basePath}/users`, icon: "👥", roles: ["Administrator"] },
-    { name: "Teams", path: `${basePath}/teams`, icon: "⚽", roles: ["Administrator"] },
+    { name: "Teams", path: `${basePath}/teams`, icon: "⚽", roles: ["Administrator", "Editor"] },
     { name: "Matches", path: `${basePath}/matches`, icon: "🏆", roles: ["Administrator", "Editor"] },
-    { name: "News", path: `${basePath}/news`, icon: "📰", roles: ["Administrator", "Editor", "Writer"] },
+    { name: "News", path: `${basePath}/news`, icon: "📰", roles: ["Administrator", "Writer"] },
     { name: "Statistik", path: `${basePath}/statistics`, icon: "📈", roles: ["Administrator", "Editor"] },
   ];
 
