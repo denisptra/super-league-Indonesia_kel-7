@@ -131,11 +131,13 @@ export default function HomePage() {
       fetch("http://localhost:3000/api/matches").then((res) => res.json()),
       fetch("http://localhost:3000/api/teams").then((res) => res.json()),
       fetch("http://localhost:3000/api/standings").then((res) => res.json()),
+      fetch("http://localhost:3000/api/news").then((res) => res.json())
     ])
-      .then(([matchResult, teamResult, standingResult]) => {
+      .then(([matchResult, teamResult, standingResult, newsResult]) => {
         const matches: Match[] = matchResult.data;
         const allTeams: Team[] = teamResult.data;
         const standings = standingResult.data;
+        const news: News[] = newsResult.data;
 
         const enrichedMatches = matches.map((m) => {
           const home = allTeams.find((t) => t.id === m.homeTeam.id);
@@ -174,16 +176,7 @@ export default function HomePage() {
           .sort((a, b) => (a.rank ?? 0) - (b.rank ?? 0));
 
         setTopTeams(enrichedTeams.slice(0, 5));
-      })
-      .catch((err) => console.error("Error:", err))
-      .finally(() => setIsLoading(false));
-  }, []);
 
-  useEffect(() => {
-    fetch("http://localhost:3000/api/news")
-      .then((res) => res.json())
-      .then((newsResult) => {
-        const news: News[] = newsResult.data;
         const enrichedRecent = news
           .map((n) => {
             const createdAt = new Date(n.createdAt);
@@ -197,7 +190,8 @@ export default function HomePage() {
 
         setRecentNews(enrichedRecent);
       })
-      .catch((err) => console.error("Error:", err));
+      .catch((err) => console.error("Error:", err))
+      .finally(() => setIsLoading(false));
   }, []);
 
   return (
